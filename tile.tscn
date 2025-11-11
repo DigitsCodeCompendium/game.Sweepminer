@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://b8vyrcv63ly8c"]
+
+[ext_resource type="Texture2D" uid="uid://caxbymakp4f3p" path="res://Tiles/bomb.png" id="1_q0ckw"]
+[ext_resource type="Texture2D" uid="uid://d0tlcgjwmbjvx" path="res://Tiles/flag.png" id="2_13eby"]
+[ext_resource type="Texture2D" uid="uid://dslywxd3sj6hx" path="res://tile.png" id="2_730n0"]
+[ext_resource type="Texture2D" uid="uid://ccdjpwsllhsd3" path="res://Tiles/empty.png" id="4_y6po4"]
+[ext_resource type="Texture2D" uid="uid://bu4f133hsf7fy" path="res://Tiles/1-tile.png" id="5_d76pi"]
+[ext_resource type="Texture2D" uid="uid://bg5f060mrkaam" path="res://Tiles/2-tile.png" id="6_a8so0"]
+[ext_resource type="Texture2D" uid="uid://dpcinmbfbe1j8" path="res://Tiles/3-tile.png" id="7_13lax"]
+[ext_resource type="Texture2D" uid="uid://c1w67oockps0s" path="res://Tiles/4-tile.png" id="8_wrktk"]
+[ext_resource type="Texture2D" uid="uid://b0as2wmapy8dd" path="res://Tiles/5-tile.png" id="9_ig3jb"]
+[ext_resource type="Texture2D" uid="uid://drhlse11eekh6" path="res://Tiles/6-tile.png" id="10_hsgty"]
+[ext_resource type="Texture2D" uid="uid://d3avm8ycgh01v" path="res://Tiles/7-tile.png" id="11_rme8h"]
+[ext_resource type="Texture2D" uid="uid://vlt20od0sfon" path="res://Tiles/8-tile.png" id="12_pdphn"]
+[ext_resource type="Script" path="res://tile.gd" id="13_48tu0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3rh0j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q0ckw")
+}],
+"loop": true,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_13eby")
+}],
+"loop": true,
+"name": &"flag",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_730n0")
+}],
+"loop": true,
+"name": &"tile",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y6po4")
+}],
+"loop": true,
+"name": &"tile-0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_d76pi")
+}],
+"loop": true,
+"name": &"tile-1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_a8so0")
+}],
+"loop": true,
+"name": &"tile-2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_13lax")
+}],
+"loop": true,
+"name": &"tile-3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_wrktk")
+}],
+"loop": true,
+"name": &"tile-4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ig3jb")
+}],
+"loop": true,
+"name": &"tile-5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_hsgty")
+}],
+"loop": true,
+"name": &"tile-6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_rme8h")
+}],
+"loop": true,
+"name": &"tile-7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_pdphn")
+}],
+"loop": true,
+"name": &"tile-8",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mrre"]
+size = Vector2(16, 16)
+
+[node name="Tile" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3rh0j")
+animation = &"tile"
+script = ExtResource("13_48tu0")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_4mrre")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
