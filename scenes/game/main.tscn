@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2kucvfdfubrt"]
 
-[ext_resource type="PackedScene" uid="uid://c1qujvqqfrcu" path="res://Grid.tscn" id="1_r5app"]
-[ext_resource type="PackedScene" uid="uid://suv5kfbh0r4t" path="res://in_game_ui.tscn" id="2_x6vmx"]
+[ext_resource type="PackedScene" uid="uid://c1qujvqqfrcu" path="res://scenes/game/Grid.tscn" id="1_r5app"]
+[ext_resource type="PackedScene" uid="uid://suv5kfbh0r4t" path="res://scenes/game/in_game_ui.tscn" id="2_x6vmx"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

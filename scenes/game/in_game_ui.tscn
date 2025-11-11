@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://suv5kfbh0r4t"]
 
-[ext_resource type="Texture2D" uid="uid://3g34veg2pnia" path="res://Tiles/flag_button.png" id="1_n4bpc"]
-[ext_resource type="Script" path="res://in_game_ui.gd" id="1_webup"]
-[ext_resource type="Script" path="res://Flag_Button.gd" id="2_wn7d1"]
-[ext_resource type="Texture2D" uid="uid://buxkry48fbd7s" path="res://Tiles/flag_button_active.png" id="4_yr3hp"]
+[ext_resource type="Script" path="res://scenes/game/in_game_ui.gd" id="1_webup"]
+[ext_resource type="Texture2D" uid="uid://3g34veg2pnia" path="res://assets/tiles/flag_button.png" id="2_qoj66"]
+[ext_resource type="Script" path="res://scenes/game/Flag_Button.gd" id="2_wn7d1"]
+[ext_resource type="Texture2D" uid="uid://buxkry48fbd7s" path="res://assets/tiles/flag_button_active.png" id="4_tl315"]
 
 [node name="inGameUI" type="Control"]
 layout_mode = 3
@@ -63,13 +63,13 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-icon = ExtResource("1_n4bpc")
+icon = ExtResource("2_qoj66")
 flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_wn7d1")
-button_off = ExtResource("1_n4bpc")
-button_on = ExtResource("4_yr3hp")
+button_off = ExtResource("2_qoj66")
+button_on = ExtResource("4_tl315")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2

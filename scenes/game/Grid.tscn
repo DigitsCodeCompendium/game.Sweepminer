@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1qujvqqfrcu"]
 
-[ext_resource type="Script" path="res://tile_grid.gd" id="1_bvr2h"]
+[ext_resource type="Script" path="res://scenes/game/tile_grid.gd" id="1_bvr2h"]
 
 [node name="Grid" type="Node2D"]
 script = ExtResource("1_bvr2h")

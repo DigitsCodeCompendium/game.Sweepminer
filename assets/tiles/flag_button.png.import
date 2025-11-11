@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpcinmbfbe1j8"
-path="res://.godot/imported/3-tile.png-8159c733b39e26f6865d49e73006db79.ctex"
+uid="uid://3g34veg2pnia"
+path="res://.godot/imported/flag_button.png-2fa3247f3f29859371c3aca3727580a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/3-tile.png"
-dest_files=["res://.godot/imported/3-tile.png-8159c733b39e26f6865d49e73006db79.ctex"]
+source_file="res://assets/tiles/flag_button.png"
+dest_files=["res://.godot/imported/flag_button.png-2fa3247f3f29859371c3aca3727580a3.ctex"]
 
 [params]
 

@@ -10,7 +10,7 @@ var grid_values_secret = Array()
 var grid_value_view = Array()
 var grid_tiles = Array()
 
-var tile_scene = preload("res://tile.tscn")
+var tile_scene = preload("res://scenes//game//tile.tscn")
 
 @export var num_bombs:int = 20
 @export var width:int = 10
