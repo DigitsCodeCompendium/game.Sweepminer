@@ -142,7 +142,7 @@ func generate():
 func _set_flag_mode(_flag_mode: bool):
 	flag_mode = _flag_mode;
 
-func _on_tile_clicked(pos:int):
+func _on_tile_clicked(pos:int,left:bool):
 	#if the value is a tile
 	if has_found_bomb:
 		generate();
@@ -151,7 +151,7 @@ func _on_tile_clicked(pos:int):
 		flag_mode = false;
 		emit_signal("change_flag_button_state", false)
 	
-	elif flag_mode: 
+	elif flag_mode or not left: 
 		if grid_value_view[pos] == TileState.TILE:
 			grid_value_view[pos] = TileState.FLAG
 			grid_tiles[pos].play(TileStateDict.get(grid_value_view[pos]))
