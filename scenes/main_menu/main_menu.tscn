@@ -1,0 +1,225 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb3x5j6i0cin7"]
+
+[ext_resource type="Texture2D" uid="uid://cduem1mudojca" path="res://assets/main_menu_title.png" id="1_12rhn"]
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_bj1os"]
+[ext_resource type="Texture2D" uid="uid://dhrt1l6ukk40f" path="res://assets/menu_background.PNG" id="1_s3l3b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0b8u3"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 23
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mudf"]
+bg_color = Color(0.776508, 0.849229, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_bj1os")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_s3l3b")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="MainContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -172.5
+offset_right = 135.0
+offset_bottom = 172.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0b8u3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="MainContainer/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+texture = ExtResource("1_12rhn")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="NewGame" type="Button" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "New Game"
+
+[node name="ContGame" type="Button" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "Continue Game"
+
+[node name="Settings" type="Button" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "Settings"
+
+[node name="Exit" type="Button" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "Exit"
+
+[node name="StartContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+offset_left = 437.0
+offset_top = 147.5
+offset_right = 715.0
+offset_bottom = 500.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0b8u3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Easy" type="Button" parent="StartContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "Easy"
+
+[node name="Normal" type="Button" parent="StartContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "Normal"
+
+[node name="Hard" type="Button" parent="StartContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "Hard"
+
+[node name="Custom" type="Button" parent="StartContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "Custom"
+
+[node name="Back" type="Button" parent="StartContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "Back"
+
+[node name="CustomContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 437.0
+offset_top = 147.5
+offset_right = 715.0
+offset_bottom = 500.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0b8u3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CustomContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Start" type="Button" parent="CustomContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "Start"
+
+[node name="Back" type="Button" parent="CustomContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "Back"
+
+[node name="SettingsContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 437.0
+offset_top = 147.5
+offset_right = 715.0
+offset_bottom = 500.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0b8u3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="SettingsContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "Lol no settings yet"
+
+[node name="Back" type="Button" parent="SettingsContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
+text = "Back"
+
+[connection signal="pressed" from="MainContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/ContGame" to="." method="_on_cont_game_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="StartContainer/VBoxContainer/Easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="StartContainer/VBoxContainer/Normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="StartContainer/VBoxContainer/Hard" to="." method="_on_hard_pressed"]
+[connection signal="pressed" from="StartContainer/VBoxContainer/Custom" to="." method="_on_custom_pressed"]
+[connection signal="pressed" from="StartContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CustomContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CustomContainer/VBoxContainer/Back" to="." method="_on_custom_back_pressed"]
+[connection signal="pressed" from="SettingsContainer/VBoxContainer/Back" to="." method="_on_settings_back_pressed"]
