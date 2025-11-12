@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://byflc7oy8qsot"]
+
+[ext_resource type="PackedScene" uid="uid://bb3x5j6i0cin7" path="res://scenes/main_menu/main_menu.tscn" id="1_l46a3"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_snims"]
+[ext_resource type="PackedScene" uid="uid://d2kucvfdfubrt" path="res://scenes/game/main.tscn" id="2_efngr"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_snims")
+
+[node name="MainMenu" parent="." instance=ExtResource("1_l46a3")]
+layout_mode = 1
+
+[node name="Game" parent="." instance=ExtResource("2_efngr")]
+visible = false
+layout_mode = 1
