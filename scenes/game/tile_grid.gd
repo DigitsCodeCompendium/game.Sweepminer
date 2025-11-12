@@ -27,6 +27,7 @@ var tile_scale;
 var screen_size;
 var grid_size;
 var offset;
+var ui_height;
 
 const TILE_SIZE = 16;
 
@@ -62,7 +63,7 @@ var TileStateDict = {
 
 func _ready():
 	screen_size = DisplayServer.window_get_size()
-	tile_scale = float(screen_size.x) / float(TILE_SIZE * (width + 1))
+	tile_scale = float(screen_size.x-10*2) / float(TILE_SIZE * (width))
 	
 	grid_size = Vector2(width, height) * TILE_SIZE * tile_scale
 	
@@ -92,6 +93,18 @@ func _ready():
 
 func _draw():
 	draw_state(false)
+	
+	screen_size = DisplayServer.window_get_size()
+	
+	tile_scale = float(screen_size.x-10*2) / float(TILE_SIZE * (width))
+	
+	grid_size = Vector2(width, height) * TILE_SIZE * tile_scale
+	
+	offset = Vector2(screen_size)/2 - grid_size/2
+	
+	offset.y = ui_height
+	
+	position = offset
 
 func draw_state(secret:bool):
 	for i in range(width * height):
@@ -101,7 +114,6 @@ func draw_state(secret:bool):
 			grid_tiles[i].play(TileStateDict.get(grid_value_view[i]))
 
 func generate():
-	print("test")
 	first_click = true;
 	num_bombs_found = 0;
 	num_flags_used = 0;
@@ -222,3 +234,7 @@ func flood_reveal(first_pos):
 	for pos in searched:
 		grid_value_view[pos] = grid_values_secret[pos]
 		grid_tiles[pos].play(TileStateDict.get(grid_value_view[pos]))
+
+
+func _on_in_game_ui_ui_height(_ui_height):
+	ui_height = _ui_height # Replace with function body.

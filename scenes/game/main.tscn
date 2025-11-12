@@ -19,7 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 20
 
 [node name="Grid" parent="MarginContainer" instance=ExtResource("1_r5app")]
 num_bombs = 40
@@ -35,4 +34,5 @@ size_flags_vertical = 6
 [connection signal="updated_flags_left" from="MarginContainer/Grid" to="inGameUI" method="_update_flags_left"]
 [connection signal="win_game" from="MarginContainer/Grid" to="inGameUI" method="_show_victory_screen"]
 [connection signal="flag_button_toggled" from="inGameUI" to="MarginContainer/Grid" method="_set_flag_mode"]
+[connection signal="ui_height" from="inGameUI" to="MarginContainer/Grid" method="_on_in_game_ui_ui_height"]
 [connection signal="victory_pressed" from="inGameUI" to="MarginContainer/Grid" method="generate"]
