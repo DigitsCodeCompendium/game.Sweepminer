@@ -97,15 +97,10 @@ func _draw():
 	draw_state(false)
 	
 	screen_size = DisplayServer.window_get_size()
-	
 	tile_scale = float(screen_size.x-10*2) / float(TILE_SIZE * (width))
-	
 	grid_size = Vector2(width, height) * TILE_SIZE * tile_scale
-	
 	offset = Vector2(screen_size)/2 - grid_size/2
-	
 	offset.y = ui_height
-	
 	position = offset
 
 func draw_state(secret:bool):

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2kucvfdfubrt"]
 
-[ext_resource type="PackedScene" uid="uid://c1qujvqqfrcu" path="res://scenes/game/Grid.tscn" id="1_r5app"]
-[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_yfgkn"]
-[ext_resource type="PackedScene" uid="uid://suv5kfbh0r4t" path="res://scenes/game/in_game_ui.tscn" id="2_x6vmx"]
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_q4t8w"]
+[ext_resource type="PackedScene" uid="uid://c1qujvqqfrcu" path="res://scenes/game/Grid.tscn" id="2_jsi28"]
+[ext_resource type="PackedScene" uid="uid://suv5kfbh0r4t" path="res://scenes/game/in_game_ui.tscn" id="3_br7nf"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("1_yfgkn")
+script = ExtResource("1_q4t8w")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -22,14 +22,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Grid" parent="MarginContainer" instance=ExtResource("1_r5app")]
+[node name="Grid" parent="MarginContainer" instance=ExtResource("2_jsi28")]
 num_bombs = 40
 width = 12
 height = 22
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="inGameUI" parent="CanvasLayer" instance=ExtResource("2_x6vmx")]
+[node name="inGameUI" parent="CanvasLayer" instance=ExtResource("3_br7nf")]
 unique_name_in_owner = true
 size_flags_horizontal = 6
 size_flags_vertical = 6
