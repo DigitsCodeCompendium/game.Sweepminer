@@ -50,7 +50,7 @@ func _on_easy_pressed():
 
 func _on_normal_pressed():
 	var packageBuilder = StartGamePackageBuilder.new()
-	var package = packageBuilder.normal().get_result()
+	var package = packageBuilder.medium().get_result()
 	emit_signal('start_game', package)
 
 

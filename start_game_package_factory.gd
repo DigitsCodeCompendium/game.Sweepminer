@@ -11,19 +11,19 @@ func start_new():
 	return self
 
 func easy():
-	package.number_of_bombs = 40;
-	package.game_height = 20;
-	package.game_width = 10
+	package.number_of_bombs = 20;
+	package.game_height = 16;
+	package.game_width = 8
 	return self
 
 func medium():
-	package.number_of_bombs = 80;
+	package.number_of_bombs = 40;
 	package.game_height = 22;
 	package.game_width = 12
 	return self
 
 func hard():
-	package.number_of_bombs = 80;
+	package.number_of_bombs = 60;
 	package.game_height = 22;
 	package.game_width = 12
 	return self

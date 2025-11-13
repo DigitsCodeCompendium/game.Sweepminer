@@ -1,15 +1,20 @@
 extends Control
 
+@onready var game_preload = preload("res://scenes/game/main.tscn")
+var game_instance;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MainMenu.connect('start_game', _on_game_start)
-	$Game.connect('end_game', _on_game_end)
 
 func _on_game_start(package:StartGamePackage):
 	$MainMenu.visible = false
-	$Game.visible = true
-
-func _on_game_end(won:bool):
+	game_instance = game_preload.instantiate()
+	game_instance.configure(package)
+	game_instance.connect("game_exit", _on_game_exit)
+	add_child(game_instance)
+	
+func _on_game_exit():
 	$MainMenu.visible = true
-	$Game.visible = false
+	game_instance.queue_free()
 	$MainMenu.reset_menu();

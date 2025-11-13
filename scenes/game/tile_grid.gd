@@ -113,6 +113,11 @@ func draw_state(secret:bool):
 		else:
 			grid_tiles[i].play(TileStateDict.get(grid_value_view[i]))
 
+func configure(package:StartGamePackage):
+	num_bombs = package.number_of_bombs
+	width = package.game_width
+	height = package.game_height
+	
 func generate():
 	first_click = true;
 	num_bombs_found = 0;
