@@ -16,6 +16,8 @@ var tile_scene = preload("res://scenes//game//tile.tscn")
 @export var width:int = 10
 @export var height:int = 20
 
+@onready var hud = get_node("%inGameUI")
+
 var num_bombs_found:int = 0;
 var num_flags_used:int = 0;
 
@@ -88,7 +90,7 @@ func _ready():
 		
 		add_child(tile)
 		grid_tiles.append(tile)
-		
+	await hud.ready
 	generate()
 
 func _draw():
@@ -114,7 +116,7 @@ func draw_state(secret:bool):
 			grid_tiles[i].play(TileStateDict.get(grid_value_view[i]))
 
 func configure(package:StartGamePackage):
-	num_bombs = package.number_of_bombs
+	num_bombs = 1#package.number_of_bombs
 	width = package.game_width
 	height = package.game_height
 	
@@ -123,7 +125,7 @@ func generate():
 	num_bombs_found = 0;
 	num_flags_used = 0;
 	emit_signal("updated_flags_left", num_bombs)
-	emit_signal("win_game", false)
+	#emit_signal("win_game", false)
 	
 	for i in range(width * height):
 		grid_values_secret[i] = TileState.ZERO;
@@ -204,6 +206,7 @@ func _on_tile_clicked(pos:int,left:bool):
 			#if the tile was a bomb, draw the whole screen and emit found bomb signal
 			elif grid_values_secret[pos] == TileState.BOMB:
 				found_bomb.emit()
+				emit_signal("win_game", false)
 				has_found_bomb = true;
 				draw_state(true)
 			
@@ -243,3 +246,12 @@ func flood_reveal(first_pos):
 
 func _on_in_game_ui_ui_height(_ui_height):
 	ui_height = _ui_height # Replace with function body.
+
+
+
+func _on_in_game_ui_replay():
+	generate();
+	draw_state(false);
+	has_found_bomb = false;
+	flag_mode = false;
+	emit_signal("change_flag_button_state", false) # Replace with function body.

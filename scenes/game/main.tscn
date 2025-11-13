@@ -30,12 +30,16 @@ height = 22
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="inGameUI" parent="CanvasLayer" instance=ExtResource("2_x6vmx")]
+unique_name_in_owner = true
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
 [connection signal="change_flag_button_state" from="MarginContainer/Grid" to="CanvasLayer/inGameUI" method="_set_flag_mode_button"]
+[connection signal="found_bomb" from="MarginContainer/Grid" to="CanvasLayer/inGameUI" method="_on_grid_found_bomb"]
 [connection signal="updated_flags_left" from="MarginContainer/Grid" to="CanvasLayer/inGameUI" method="_update_flags_left"]
-[connection signal="win_game" from="MarginContainer/Grid" to="CanvasLayer/inGameUI" method="_show_victory_screen"]
+[connection signal="win_game" from="MarginContainer/Grid" to="CanvasLayer/inGameUI" method="_on_grid_win_game"]
 [connection signal="flag_button_toggled" from="CanvasLayer/inGameUI" to="MarginContainer/Grid" method="_set_flag_mode"]
+[connection signal="game_exit" from="CanvasLayer/inGameUI" to="." method="_on_game_exit"]
+[connection signal="replay" from="CanvasLayer/inGameUI" to="MarginContainer/Grid" method="_on_in_game_ui_replay"]
 [connection signal="ui_height" from="CanvasLayer/inGameUI" to="MarginContainer/Grid" method="_on_in_game_ui_ui_height"]
 [connection signal="victory_pressed" from="CanvasLayer/inGameUI" to="MarginContainer/Grid" method="generate"]

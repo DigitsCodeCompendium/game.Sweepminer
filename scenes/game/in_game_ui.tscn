@@ -1,10 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://suv5kfbh0r4t"]
+[gd_scene load_steps=9 format=3 uid="uid://suv5kfbh0r4t"]
 
 [ext_resource type="Script" path="res://scenes/game/in_game_ui.gd" id="1_webup"]
 [ext_resource type="FontFile" uid="uid://dq5xvruf6b7bo" path="res://assets/font_sheet_tile_font.png" id="2_icgvp"]
 [ext_resource type="Texture2D" uid="uid://3g34veg2pnia" path="res://assets/tiles/flag_button.png" id="2_qoj66"]
 [ext_resource type="Script" path="res://scenes/game/Flag_Button.gd" id="2_wn7d1"]
 [ext_resource type="Texture2D" uid="uid://buxkry48fbd7s" path="res://assets/tiles/flag_button_active.png" id="4_tl315"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aulx6"]
+bg_color = Color(0.196078, 0.207843, 0.231373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wsob"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 23
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uw186"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.776508, 0.849229, 1, 1)
+shadow_size = 5
 
 [node name="inGameUI" type="Control"]
 layout_mode = 3
@@ -16,35 +41,22 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_webup")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HudContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 128.0
 grow_horizontal = 2
-grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aulx6")
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HudContainer"]
 layout_mode = 2
-size_flags_vertical = 0
-mouse_filter = 0
-
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2"]
-layout_mode = 2
-color = Color(0.196078, 0.207843, 0.231373, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+[node name="RemainingFlags" type="Label" parent="HudContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_icgvp")
@@ -53,13 +65,14 @@ text = "20"
 horizontal_alignment = 3
 vertical_alignment = 3
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HudContainer/HBoxContainer"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_stretch_ratio = 1.43
 ratio = 0.9985
 
-[node name="Button" type="Button" parent="VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+[node name="FlagModeButton" type="Button" parent="HudContainer/HBoxContainer"]
+unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -73,20 +86,33 @@ script = ExtResource("2_wn7d1")
 button_off = ExtResource("2_qoj66")
 button_on = ExtResource("4_tl315")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="EndScreenContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
-theme_override_constants/margin_top = 200
+offset_left = 741.0
+offset_top = 589.5
+offset_right = 1179.0
+offset_bottom = 643.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6wsob")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="EndScreenContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="VictoryContainer" type="AspectRatioContainer" parent="EndScreenContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 ratio = 3.9915
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer/AspectRatioContainer"]
+[node name="ColorRect" type="ColorRect" parent="EndScreenContainer/VBoxContainer/VictoryContainer"]
 layout_mode = 2
 color = Color(0.025582, 0.443558, 0.0207955, 1)
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/AspectRatioContainer"]
+[node name="Label" type="Label" parent="EndScreenContainer/VBoxContainer/VictoryContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("2_icgvp")
@@ -94,3 +120,27 @@ theme_override_font_sizes/font_size = 60
 text = "Victory"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndScreenContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Replay" type="Button" parent="EndScreenContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_icgvp")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_uw186")
+text = "Replay"
+
+[node name="Exit" type="Button" parent="EndScreenContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_icgvp")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_uw186")
+text = "Exit"
+
+[connection signal="pressed" from="EndScreenContainer/VBoxContainer/HBoxContainer/Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="EndScreenContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
