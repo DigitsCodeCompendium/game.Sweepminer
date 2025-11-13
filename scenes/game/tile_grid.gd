@@ -116,7 +116,7 @@ func draw_state(secret:bool):
 			grid_tiles[i].play(TileStateDict.get(grid_value_view[i]))
 
 func configure(package:StartGamePackage):
-	num_bombs = 1#package.number_of_bombs
+	num_bombs = package.number_of_bombs
 	width = package.game_width
 	height = package.game_height
 	
