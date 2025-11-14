@@ -1,6 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1qujvqqfrcu"]
 
-[ext_resource type="Script" path="res://scenes/game/grid.gd" id="1_bvr2h"]
+[ext_resource type="Script" path="res://scenes/game/grid.gd" id="1_av2ge"]
 
-[node name="Grid" type="Node2D"]
-script = ExtResource("1_bvr2h")
+[node name="Grid" type="Container"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_av2ge")
+
+[node name="TileHolder" type="Node2D" parent="."]

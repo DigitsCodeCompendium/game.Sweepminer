@@ -3,6 +3,12 @@ extends RefCounted
 
 var package: StartGamePackage
 
+static func is_on_desktop():
+	match OS.get_name():
+		'Windows', "macOS", "Linux":
+			return true
+	return false
+
 func _init():
 	self.package = StartGamePackage.new()
 
@@ -11,21 +17,33 @@ func start_new():
 	return self
 
 func easy():
-	package.number_of_bombs = 20;
-	package.game_height = 16;
-	package.game_width = 8
+	package.number_of_bombs = 20
+	if is_on_desktop():
+		package.game_height = 8
+		package.game_width = 16
+	else:
+		package.game_height = 16
+		package.game_width = 8
 	return self
 
 func medium():
-	package.number_of_bombs = 40;
-	package.game_height = 22;
-	package.game_width = 12
+	package.number_of_bombs = 40
+	if is_on_desktop():
+		package.game_height = 12
+		package.game_width = 22
+	else:
+		package.game_height = 22
+		package.game_width = 12
 	return self
 
 func hard():
 	package.number_of_bombs = 60;
-	package.game_height = 22;
-	package.game_width = 12
+	if is_on_desktop():
+		package.game_height = 12
+		package.game_width = 22
+	else:
+		package.game_height = 22
+		package.game_width = 12
 	return self
 
 func set_game_height(height:int):

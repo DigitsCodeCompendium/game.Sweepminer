@@ -1,4 +1,4 @@
-extends Node2D
+extends Container
 
 signal found_bomb()
 signal updated_flags_left(flags_left:int)
@@ -17,21 +17,21 @@ var tile_scene = preload("res://scenes//game//tile.tscn")
 @export var height:int = 20
 
 @onready var hud = get_node("%inGameUI")
+@onready var tile_holder = get_node("TileHolder")
 
-var num_bombs_found:int = 0;
-var num_flags_used:int = 0;
+var is_height_dependant = false #if true the tiles will scale the height to match the width
 
-var has_found_bomb :bool;
-var first_click :bool;
-var flag_mode :bool;
+var num_bombs_found:int = 0; #how many bombs have flags on them
+var num_flags_used:int = 0; #how many flags have already been placed
 
-var tile_scale;
-var screen_size;
-var grid_size;
-var offset;
-var ui_height;
+var has_found_bomb :bool; #has the player found a bomb
+var first_click :bool; #is this the first click of the game
+var flag_mode :bool; #in flag mode you place flags instead of revealing tiles
 
-const TILE_SIZE = 16;
+var grid_size; #what is the size in pixels of the grid when unscaled
+var ui_height; #how high is the top ui
+
+const TILE_SIZE = 16; #how many pixels are the tile sprites
 
 enum TileState {
 	TILE = 9,
@@ -64,13 +64,9 @@ var TileStateDict = {
 }
 
 func _ready():
-	screen_size = DisplayServer.window_get_size()
-	tile_scale = float(screen_size.x-10*2) / float(TILE_SIZE * (width))
-	
-	grid_size = Vector2(width, height) * TILE_SIZE * tile_scale
-	
-	offset = Vector2(screen_size)/2 - grid_size/2
-	
+	var screen_size = DisplayServer.window_get_size()
+	grid_size = Vector2(width, height) * TILE_SIZE;
+	var offset = Vector2(screen_size)/2 - grid_size/2
 	position = offset
 	
 	for i in range(width * height):
@@ -80,15 +76,15 @@ func _ready():
 	# Fill the array with 25 elements, initialized to 0
 	for i in range(width * height):
 		var tile = tile_scene.instantiate()
-		tile.position = Vector2(((i % width)+0.5) * TILE_SIZE * tile_scale, 
-								(floor(i / width)+0.5) * TILE_SIZE * tile_scale)
-		tile.scale = Vector2(tile_scale, tile_scale)
+		tile.position = Vector2(((i % width)+0.5) * TILE_SIZE, 
+								(floor(i / width)+0.5) * TILE_SIZE)
+		#tile.scale = Vector2(tile_scale, tile_scale)
 		var tile_anim = TileStateDict.get(grid_values_secret[i])
 		tile.play(tile_anim)
 		tile.pos = i
 		tile.connect("tile_clicked", _on_tile_clicked)
 		
-		add_child(tile)
+		tile_holder.add_child(tile)
 		grid_tiles.append(tile)
 	await hud.ready
 	generate()
@@ -96,12 +92,16 @@ func _ready():
 func _draw():
 	draw_state(false)
 	
-	screen_size = DisplayServer.window_get_size()
-	tile_scale = float(screen_size.x-10*2) / float(TILE_SIZE * (width))
-	grid_size = Vector2(width, height) * TILE_SIZE * tile_scale
-	offset = Vector2(screen_size)/2 - grid_size/2
-	offset.y = ui_height
-	position = offset
+	var grid_scale = 0
+	grid_scale = size.x /grid_size.x
+	
+	var scaled_size = grid_size * grid_scale
+	if scaled_size.y > size.y:
+		grid_scale = size.y /grid_size.y
+		scaled_size = grid_size * grid_scale
+	
+	tile_holder.position = size/2 - scaled_size/2
+	tile_holder.scale = Vector2(grid_scale, grid_scale)
 
 func draw_state(secret:bool):
 	for i in range(width * height):
@@ -157,15 +157,7 @@ func _set_flag_mode(_flag_mode: bool):
 	flag_mode = _flag_mode;
 
 func _on_tile_clicked(pos:int,left:bool):
-	#if the value is a tile
-	if has_found_bomb:
-		generate();
-		draw_state(false);
-		has_found_bomb = false;
-		flag_mode = false;
-		emit_signal("change_flag_button_state", false)
-	
-	elif flag_mode or not left: 
+	if flag_mode or not left: 
 		if grid_value_view[pos] == TileState.TILE:
 			grid_value_view[pos] = TileState.FLAG
 			grid_tiles[pos].play(TileStateDict.get(grid_value_view[pos]))
