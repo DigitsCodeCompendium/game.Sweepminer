@@ -80,28 +80,28 @@ stretch_mode = 5
 [node name="NewGame" type="Button" parent="MainContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "New Game"
 
 [node name="ContGame" type="Button" parent="MainContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "Continue Game"
 
 [node name="Settings" type="Button" parent="MainContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "Settings"
 
 [node name="Exit" type="Button" parent="MainContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "Exit"
 
@@ -129,35 +129,35 @@ theme_override_constants/separation = 16
 [node name="Easy" type="Button" parent="StartContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "Easy"
 
 [node name="Normal" type="Button" parent="StartContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "Normal"
 
 [node name="Hard" type="Button" parent="StartContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "Hard"
 
 [node name="Custom" type="Button" parent="StartContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "Custom"
 
 [node name="Back" type="Button" parent="StartContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "Back"
 
@@ -185,14 +185,14 @@ theme_override_constants/separation = 16
 [node name="Start" type="Button" parent="CustomContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "Start"
 
 [node name="Back" type="Button" parent="CustomContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "Back"
 
@@ -220,13 +220,13 @@ theme_override_constants/separation = 16
 [node name="Label" type="Label" parent="SettingsContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 27
+theme_override_font_sizes/font_size = 70
 text = "Lol no settings yet"
 
 [node name="Back" type="Button" parent="SettingsContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_rdica")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mudf")
 text = "Back"
 

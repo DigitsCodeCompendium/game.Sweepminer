@@ -39,4 +39,5 @@ func _on_replay_pressed():
 func _on_grid_win_game(won):
 	end_screen.visible = true;
 	end_screen.get_node("%VictoryContainer").visible = won
+	end_screen.get_node("%LoseContainer").visible = !won
 
